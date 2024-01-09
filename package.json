@@ -2,7 +2,7 @@
   "name": "react-fierbase-chat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yehorivanov.github.io/react-fierbase-chat/",
+  "homepage": "https://yehorivanov.github.io/react-fierbase-chat",
   "dependencies": {
     "-": "^0.0.1",
     "@emotion/react": "^11.11.3",
