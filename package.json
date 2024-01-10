@@ -1,8 +1,9 @@
+
 {
   "name": "react-fierbase-chat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yehorivanov.github.io/react-fierbase-chat",
+"homepage": "https://superchat-f613e.web.app/",
   "dependencies": {
     "-": "^0.0.1",
     "@emotion/react": "^11.11.3",
