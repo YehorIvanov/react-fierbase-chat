@@ -27,9 +27,7 @@ const Login = () => {
                 lastLogin: serverTimestamp(),
                 userPhotoURL: currentUser.photoURL,
               })
-                .then(() => {
-                  console.log('Document updated: ', currentUser.email);
-                })
+                .then(() => {})
                 .catch((error) => {
                   console.error('Error updating document: ', error);
                 });
@@ -39,9 +37,7 @@ const Login = () => {
                 lastLogin: serverTimestamp(),
                 userPhotoURL: currentUser.photoURL,
               })
-                .then(() => {
-                  console.log('Document created: ', currentUser.email);
-                })
+                .then(() => {})
                 .catch((error) => {
                   console.error('Error creating document: ', error);
                 });

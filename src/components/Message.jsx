@@ -1,4 +1,3 @@
-import { Avatar } from '@mui/material';
 import { UserContext } from '../context';
 import { useContext } from 'react';
 
@@ -7,7 +6,7 @@ const Message = ({ userPhotoURL, text, time, authorName, authorEmail }) => {
     user: { email: currentUserEmail },
   } = useContext(UserContext);
 
-  const isMyMessage = authorEmail == currentUserEmail;
+  const isMyMessage = authorEmail === currentUserEmail;
   const timeString = time
     ? `${String(
         new Date(time.seconds * 1000 + time.nanoseconds / 1000000).getHours()

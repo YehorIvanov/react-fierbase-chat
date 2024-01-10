@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import { UserContext } from '../context';
 import Message from './Message';
 import { db } from '../firebase';
@@ -15,6 +15,7 @@ import {
 
 const Chat = () => {
   const { user } = useContext(UserContext);
+  const chatContainerRef = useRef(null);
   const [myMessage, setMyMessage] = useState('');
 
   const [messages, setMessages] = useState([]);
@@ -31,7 +32,6 @@ const Chat = () => {
         time: serverTimestamp(),
         userPhotoURL: user.photoURL,
       });
-      console.log('Document written with ID: ', timestamp);
     } catch (e) {
       console.error('Error adding document: ', e);
     }
@@ -44,11 +44,13 @@ const Chat = () => {
       (querySnapshot) => {
         const data = querySnapshot.docs.map((doc) => doc.data());
         setMessages(data);
-
         setLoading(false);
+        setTimeout(() => {
+          chatContainerRef.current.scrollTop =
+            chatContainerRef.current.scrollHeight;
+        }, 1000);
       }
     );
-
     return () => {
       unsubscribe();
     };
@@ -56,7 +58,7 @@ const Chat = () => {
 
   return (
     <>
-      <div className="chat">
+      <div className="chat" ref={chatContainerRef}>
         {loading ? (
           <hr></hr>
         ) : (
