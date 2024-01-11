@@ -48,7 +48,6 @@ const Login = () => {
         }
       }
     });
-
     return () => {
       unsubscribe();
     };

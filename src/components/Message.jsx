@@ -1,7 +1,15 @@
 import { UserContext } from '../context';
 import { useContext } from 'react';
+import StoredImg from './StoredImg';
 
-const Message = ({ userPhotoURL, text, time, authorName, authorEmail }) => {
+const Message = ({
+  userPhotoURL,
+  text,
+  time,
+  authorName,
+  authorEmail,
+  image,
+}) => {
   const {
     user: { email: currentUserEmail },
   } = useContext(UserContext);
@@ -14,24 +22,13 @@ const Message = ({ userPhotoURL, text, time, authorName, authorEmail }) => {
         new Date(time.seconds * 1000 + time.nanoseconds / 1000000).getMinutes()
       ).padStart(2, '0')}`
     : 'now';
+  if (!!image) console.log(image);
   return (
     <>
-      <div
-        className={isMyMessage ? 'message message__my-message' : 'message'}
-
-        // style={{
-        //   alignSelf: isMyMessage ? 'end' : 'start',
-        //   flexDirection: isMyMessage ? 'row-reverse' : 'row',
-        //   justifySelf: 'end',
-        //   display: 'flex',
-        //   padding: '5px',
-        //   borderRadius: '20px',
-        //   margin: '5px',
-        //   backgroundColor: 'lightgrey',
-        // }}
-      >
-        <div>
+      <div className={isMyMessage ? 'message message__my-message' : 'message'}>
+        <div className="message_content">
           <p className="message_text">{text}</p>
+          {!!image && <StoredImg fileRef={image} alt="Stored Image" />}
           <p className="message_time">{timeString}</p>
         </div>
         <img className="message_avatar" src={userPhotoURL} alt="User Avatar" />
